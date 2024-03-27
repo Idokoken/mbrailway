@@ -1,0 +1,35 @@
+*{
+box-sizing: border-box;
+}
+/* general styling */
+body{
+font-family: 'Roboto', serif;
+margin: 0;
+padding: 0;
+font-weight: 700;
+}
+
+main{
+min-height: 50vh;
+
+}
+main a{
+    text-decoration: none;
+    color: inherit;
+}
+main a:hover{
+   color: rgba(219, 26, 165, 0.5);
+   font-weight: 600;
+}
+
+
+
+
+
+/* for medium and large screen */
+@media only screen and (min-width: 768px){
+/*general styling */
+
+
+
+ }
