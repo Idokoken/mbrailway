@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+@import "header.css";
+@import "footer.css";
+@import "register.css";
+
+
+:root{
+  --primary-color:  rgba(209, 23, 11, 1);
+  --secondary-color:  rgba(255, 255, 255, 1);
 *{
 box-sizing: border-box;
 }
 /* general styling */
 body{
-font-family: 'Roboto', serif;
+font-family: "Roboto Serif", serif;
 margin: 0;
 padding: 0;
-font-weight: 700;
 }
 
 main{
@@ -18,8 +26,8 @@ main a{
     color: inherit;
 }
 main a:hover{
-   color: rgba(219, 26, 165, 0.5);
-   font-weight: 600;
+   opacity: 0.5;
+   font-weight: 700;
 }
 
 

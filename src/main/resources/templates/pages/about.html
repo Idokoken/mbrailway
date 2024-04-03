@@ -1,16 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon" />
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
     <link rel="stylesheet" th:href="@{/css/brands.css}">
     <link rel="stylesheet" th:href="@{/css/solid.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-   <title>mbrailway</title>
+    <title>mbrailway</title>
 </head>
 <body>
 <!--header section-->
@@ -18,19 +18,26 @@
 
 <!--main section-->
 <main>
-    <div class="container adminpage mt-5">
-        <h1 class="text-bold">welcome home</h1>
+    <div class="container about">
+        <h2>About Us</h2>
+        <h3>Mission</h3>
+        <p style="text-indent: 30px;">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum dignissimos possimus rerum
+            voluptatem! Accusantium ad assumenda beatae labore magni nesciunt quod tenetur ullam vel voluptas.
+            Blanditiis dolore obcaecati optio!
+        </p>
 
     </div>
 </main>
-<!--header section-->
-<footer th:replace="fragments/footer :: footer">...</footer>
 
+<!--footer section-->
+<footer th:replace="fragments/footer :: footer">...</footer>
 
 <!--javascript section-->
 <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/solid.js}"></script>
 <script type="text/javascript" th:src="@{/js/brands.js}"></script>
 <script type="text/javascript" th:src="@{/js/fontawesome.js}"></script>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
 </body>
 </html>
