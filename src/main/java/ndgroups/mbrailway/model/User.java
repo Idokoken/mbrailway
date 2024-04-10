@@ -1,46 +1,43 @@
 package ndgroups.mbrailway.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.Set;
+
 
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "Name is mandatory")
+    @NotBlank(message = "name is required")
     private String name;
     @Column(unique = true)
-    @NotBlank(message = "Email is mandatory")
+    @NotBlank(message = "email is required")
     private String email;
-    @NotBlank(message = "password is mandatory")
+    @Column(nullable = false)
+    @NotBlank(message = "password is required")
     private String password;
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "user_roles",
-//            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")}
-//    )
-//    Set<Role> authorities;
-//    @CreationTimestamp
-//    private LocalDateTime createdAt;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;
-//        this.authorities = authorities;
+        this.role = role;
     }
 }

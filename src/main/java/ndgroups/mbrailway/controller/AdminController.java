@@ -1,25 +1,35 @@
 package ndgroups.mbrailway.controller;
 
+import ndgroups.mbrailway.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class AdminController {
     @Autowired
 //    private UserService userService;
 
-    @GetMapping
+    @GetMapping("/home")
     public String getAdminDashboard() {
         return "admin/adminDashboard";
+    }
+    @GetMapping("/login")
+    public String getAdminLogin(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "admin/adminlogin";
+    }
+    @PostMapping("/login")
+    public String saveAdmin(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "admin/adminlogin";
     }
 
     @RequestMapping("/delete/{id}")
