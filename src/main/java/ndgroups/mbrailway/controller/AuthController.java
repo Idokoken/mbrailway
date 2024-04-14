@@ -1,11 +1,11 @@
 package ndgroups.mbrailway.controller;
 
 import ndgroups.mbrailway.model.User;
-//import ndgroups.mbrailway.service.AuthenticationService;
+import ndgroups.mbrailway.repository.UserRepository;
+import ndgroups.mbrailway.service.AuthenticationService;
 import ndgroups.mbrailway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.token.TokenService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,29 +13,28 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/auth")
-//@CrossOrigin("*")
+//@RequestMapping("/auth")
 public class AuthController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
 //    @Autowired
-//    AuthenticationService authenticationService;
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
-//    @Autowired
-//    private TokenService tokenService;
-
-
+//    private AuthenticationService authenticationService;
     @GetMapping("/register")
-    public String getRegisterUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+    public String getRegisterUser(@ModelAttribute("user") User user) {
         return "pages/register";
     }
-    //    @PostMapping("/register")
-//    public User registerUser(@RequestBody RegistrationDTO userDTO) {
-//        return authenticationService.registerUser(userDTO.getName(),userDTO.getEmail(), userDTO.getPassword());
-//    }
+    @PostMapping("/register")
+    public String registerUser(@Valid @ModelAttribute("user") User user, Model model) {
+//        User newUser = authenticationService.registerUser(user);
+//        model.addAttribute("message", "registration successful");
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "redirect:/login?success";
+    }
 //    @PostMapping("/register")
 //    public String registerUser(@Valid @ModelAttribute("user") RegistrationDTO userDTO, Model model, Errors errors) {
 //        User existingUser = userService.findUserByEmail(userDTO.getEmail());
@@ -53,34 +52,14 @@ public class AuthController {
 //    }
 
     @GetMapping("/login")
-    public String getLogin(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+    public String getLogin() {
         return "pages/login";
     }
-
-    //    @PostMapping("/login")
-//    public String loginUser(@ModelAttribute("user") RegistrationDTO userDTO) {
-//        authenticationService.loginUser(userDTO.getEmail(), userDTO.getPassword());
-//        return "redirect:/";
-//    }
-//    @PostMapping("/login")
-//    public String loginUser2(@ModelAttribute RegistrationDTO userDTO) {
-//        Authentication auth  = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(userDTO.getName(), userDTO.getPassword())
-//        );
-//        SecurityContextHolder.getContext().setAuthentication(auth);
-//
-//        String token  = tokenService.generateJwt(auth);
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//        return "redirect:/";
-//    }
 
     //logout route
     @PostMapping("/logout")
     public String logout() {
-        return "redirect:/auth/login?logout";
+        return "redirect:/login?logout";
     }
 }
 

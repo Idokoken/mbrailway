@@ -21,21 +21,21 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "name is required")
-    private String name;
+//    @NotBlank(message = "name is required")
+//    private String name;
     @Column(unique = true)
     @NotBlank(message = "email is required")
     private String email;
-    @Column(nullable = false)
+    private String username;
     @NotBlank(message = "password is required")
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+    private String role;
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    public User(String name, String email, String password, Role role) {
-        this.name = name;
+    public User(String username, String email, String password, String role) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;

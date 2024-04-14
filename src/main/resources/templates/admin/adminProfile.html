@@ -13,13 +13,15 @@
     <title>mbrailway</title>
 </head>
 <body>
-   <!--header section-->
-    <header th:replace="fragments/header :: header">...</header>
-    <main>
-        <h2>User Profile</h2>
-    </main>
-   <!--footer section-->
-   <footer th:replace="fragments/footer :: footer">...</footer>
+<!--header section-->
+<header th:replace="fragments/header :: header">...</header>
+<main>
+    <h2>Admin Profile</h2>
+
+    <div><a th:href="@{/admin/home}" class="btn btn-info">Admin Dashboard</a></div>
+</main>
+<!--footer section-->
+<footer th:replace="fragments/footer :: footer">...</footer>
 
 <!--javascript section-->
 <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>

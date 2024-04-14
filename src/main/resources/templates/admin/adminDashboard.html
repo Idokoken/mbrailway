@@ -21,7 +21,9 @@
 <main>
     <div class="container adminpage mt-5">
         <h4 class="text-bold">Admin Dashboard</h4>
-
+        <form th:action="@{/admin/logout}" method="post">
+            <input type="submit" value="logout" />
+        </form>
         <div class="userInfo">
 
             <table class="table table-dark table-striped" th:if="${users}">

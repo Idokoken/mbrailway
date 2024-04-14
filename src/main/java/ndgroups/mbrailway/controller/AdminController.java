@@ -2,35 +2,34 @@ package ndgroups.mbrailway.controller;
 
 import ndgroups.mbrailway.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/admin")
 //@CrossOrigin("*")
 public class AdminController {
-    @Autowired
-//    private UserService userService;
+//    @Autowired
+//    private CustomUserDetailsService customUserDetailsService;
 
     @GetMapping("/home")
     public String getAdminDashboard() {
         return "admin/adminDashboard";
     }
-    @GetMapping("/login")
-    public String getAdminLogin(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "admin/adminlogin";
+    @GetMapping("/profile")
+    public String getAdminProfile(){
+        return "admin/adminProfile";
     }
-    @PostMapping("/login")
-    public String saveAdmin(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "admin/adminlogin";
-    }
+//    @GetMapping("/profile")
+//    public String getAdminProfile(Model model, Principal principal){
+//        UserDetails userDetails = customUserDetailsService.loadUserByUsername(principal.getName());
+//        model.addAttribute("user", userDetails);
+//        return "admin/adminProfile";
+//    }
 
     @RequestMapping("/delete/{id}")
     public String delUser(@PathVariable Integer id, Model model) {

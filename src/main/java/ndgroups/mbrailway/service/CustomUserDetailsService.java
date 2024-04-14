@@ -15,12 +15,45 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Optional<User> user = userRepository.findByUsername(username);
+//        if(user.isPresent()){
+//            var userObj = user.get();
+//            return org.springframework.security.core.userdetails.User.builder()
+//                    .username(userObj.getUsername())
+//                    .password(userObj.getPassword())
+//                    .roles(getRoles(userObj))
+//                    .build();
+//
+//        } else {
+//            throw new UsernameNotFoundException("No user found for the given username");
+//        }
+//    }
+
+//    public String[] getRoles(User user){
+//        if (user.getRole() == null) {
+//            return new String[]{"USER"};
+//        }
+//        return user.getRole().split(",");
+//    }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Optional<User> user = userRepository.findByUsername(username);
+//        if(user.get() == null) {
+//            throw new UsernameNotFoundException("No user found for the given Email");
+//        }
+//        return new CustomUserDetails(user.get());
+//    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByEmail(username);
-        if(user.get() == null) {
+        User user = userRepository.findByEmail(username);
+        if(user == null) {
             throw new UsernameNotFoundException("No user found for the given Email");
         }
-        return new CustomUserDetails(user.get());
+        return new CustomUserDetails(user);
     }
 }
