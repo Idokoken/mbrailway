@@ -14,9 +14,13 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservationId;
+    private String filterDate;
+    private String fromDestination;
+    private String toDestination;
+    private Double price;
+    private String time;
 //    User customer;
     @CreationTimestamp
-    private LocalDateTime CreatedAt;
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime bookingTime;
+
 }

@@ -27,31 +27,26 @@
                 molestiae non ullam voluptatibus. Animi atque dolorum et hic in quas quia, quod tempora
                 ut vel Error, et quasi.
             </p>
-
-
         </div>
         <div class="form container col-md-8  mt-4">
-            <form action="#" th:action="@{/contact}" th:Object="${contact}"  method="POST">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="enter name here"/>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="enter email here"/>
-                </div>
-                <div class="mb-3">
-                    <label for="subject" class="form-label">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="subject" placeholder="enter subject here"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="comment" class="form-label">Comment</label>
-                    <textarea class="form-control" id="comment" name="comment" rows="6"></textarea>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                </div>
+
+
+            <form action="#" th:action="@{/contact}" th:object="${personForm}" method="post">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" th:field="*{name}" /></td>
+                        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td><input type="text" th:field="*{age}" /></td>
+                        <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Submit</button></td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>

@@ -24,7 +24,7 @@ public class UserService {
 
     public User updateUser(Integer id, User student) {
         User existingUser  = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("student not found"));
+                .orElseThrow(() -> new EntityNotFoundException("user not found"));
 
         // Copy updated fields to existing product (excluding id)
         BeanUtils.copyProperties(student,existingUser, "id");

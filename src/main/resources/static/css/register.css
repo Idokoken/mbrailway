@@ -1,3 +1,23 @@
 .register{
 
 }
+.register .form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.register .logon a{
+   font-style: italics;
+   text-decoration: none;
+}
+.register button{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+* for medium and large screen */
+@media only screen and (min-width: 768px){
+/*general styling */
+
+ }

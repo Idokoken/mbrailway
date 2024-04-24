@@ -13,23 +13,22 @@
     <title>mbrailway</title>
 </head>
 <body>
-<div class="register d-flex align-items-center flex-column">
+<div class="register">
 
-    <div class='top-section d-flex justify-content-center flex-row flex-column align-items-center'>
-        <h3 class="text-dark text-center">ahom</h3>
-        <img src="/images/logo.png" alt="brand" width="50" height="50" class="d-inline-block align-text-top me-1">
-        <h2 class='mt-3 text-center'>Sign In</h2>
-    </div>
-
-    <div class="content d-flex flex-column mt-3">
-        <div th:if="${param.success}">
-            <div class="alert alert-info">Registration successful, login</div>
+    <div class="logon-container">
+        <div class='top-section'>
+            <h2 class='mt-3 text-center'>Sign In</h2>
         </div>
-        <div th:if="${param.error}">
-            <div class="alert alert-danger">Invalid username or Password</div>
-        </div>
-        <div th:if="${param.logout}">
-            <div class="alert alert-success">You have been logged out</div>
+        <div class="messages">
+            <div th:if="${param.success}">
+                <div class="alert alert-success">Registration successful, login</div>
+            </div>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid username or Password</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success">You have been logged out</div>
+            </div>
         </div>
         <form th:action="@{/login}" method="post">
             <div class="mb-3">
@@ -40,13 +39,18 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" />
             </div>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
             <button type="submit" class="btn-primary form-control mt-3">Submit</button>
         </form>
-        <div class='mt-3 login'>
+        <div class='mt-3 logon'>
             <p>Not yet a member ?
-                <a th:href="@{/register}" class='btn-secondary'>Sign Up</a></p>
+                <a th:href="@{/auth/register}" class=''>Sign Up</a>
+            </p>
         </div>
     </div>
+
 </div>
 
 <!--javascript section-->

@@ -1,13 +1,14 @@
 package ndgroups.mbrailway.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 
@@ -21,12 +22,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//    @NotBlank(message = "name is required")
-//    private String name;
     @Column(unique = true)
     @NotBlank(message = "email is required")
     private String email;
+    @NotBlank(message = "username is required")
     private String username;
+
     @NotBlank(message = "password is required")
     private String password;
 //    @Enumerated(EnumType.STRING)
@@ -39,5 +40,17 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

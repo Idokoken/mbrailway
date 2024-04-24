@@ -1,55 +1,49 @@
 package ndgroups.mbrailway.controller;
 
+import jakarta.validation.Valid;
 import ndgroups.mbrailway.model.User;
 import ndgroups.mbrailway.repository.UserRepository;
-import ndgroups.mbrailway.service.AuthenticationService;
 import ndgroups.mbrailway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.validation.Valid;
+
+import java.util.Optional;
 
 @Controller
-//@RequestMapping("/auth")
-public class AuthController {
+public class AuthController implements WebMvcConfigurer {
     @Autowired
     private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
-//    @Autowired
-//    private AuthenticationService authenticationService;
-    @GetMapping("/register")
+
+    @GetMapping("/auth/register")
     public String getRegisterUser(@ModelAttribute("user") User user) {
         return "pages/register";
     }
-    @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("user") User user, Model model) {
-//        User newUser = authenticationService.registerUser(user);
-//        model.addAttribute("message", "registration successful");
+    @PostMapping("/auth/register")
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "pages/register";
+        }
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser.isPresent()) {
+            bindingResult.rejectValue("email", null, "Email already in use");
+            return "pages/register";
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:/login?success";
     }
-//    @PostMapping("/register")
-//    public String registerUser(@Valid @ModelAttribute("user") RegistrationDTO userDTO, Model model, Errors errors) {
-//        User existingUser = userService.findUserByEmail(userDTO.getEmail());
-//
-//        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-//            errors.rejectValue("email", null,
-//                    "Email already in use");
-//        }
-//        if(errors.hasErrors()){
-//            return "pages/register";
-//        }
-//        authenticationService.registerUser(userDTO.getName(),userDTO.getEmail(), userDTO.getPassword());
-////      userService.addUser(userDto);
-//        return "redirect:/auth/login?success";
-//    }
+
 
     @GetMapping("/login")
     public String getLogin() {

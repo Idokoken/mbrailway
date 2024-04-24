@@ -30,18 +30,5 @@ public class TestController {
         return userRepository.save(user);
 
     }
-//    @PostMapping("/test/login")
-//    public ResponseEntity<String> loginrUserTest(@RequestBody User user) {
-//        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//        try {
-//            authentication = SecurityContextHolder.getContext().getAuthentication();
-//            return ResponseEntity.ok("Login successful!");
-//        } catch (BadCredentialsException ex) {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username/password supplied");
-//        }
-//    }
-//
-//
+
 }

@@ -1,14 +1,20 @@
 package ndgroups.mbrailway.controller;
 
+import jakarta.validation.Valid;
+import ndgroups.mbrailway.model.PersonForm;
 import ndgroups.mbrailway.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Controller
-public class IndexController {
+public class IndexController implements WebMvcConfigurer {
     @Autowired
     private ReservationService reservationService;
 
@@ -16,15 +22,24 @@ public class IndexController {
 //    public String getHome(Model model){
 //        return "index";
 //    }
+
     @GetMapping("/contact")
-    public String getContact() {
+    public String getContact(PersonForm personForm) {
         return "pages/contact";
     }
     @PostMapping("/contact")
-    public String createMessage(Model model) {
+    public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult, Model model) {
         model.addAttribute("greeting", "message sent successfully");
-        return "pages/contact";
+        if (bindingResult.hasErrors()) {
+            return "pages/contact";
+        }
+        return "redirect:/results";
     }
+    @GetMapping("/results")
+    public String getResult() {
+        return "results";
+    }
+
     @GetMapping("/about")
     public String getAbout() {
         return  "pages/about";

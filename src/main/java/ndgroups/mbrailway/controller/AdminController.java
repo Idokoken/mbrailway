@@ -11,7 +11,6 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/admin")
-//@CrossOrigin("*")
 public class AdminController {
 //    @Autowired
 //    private CustomUserDetailsService customUserDetailsService;
