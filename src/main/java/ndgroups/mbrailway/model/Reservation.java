@@ -2,11 +2,18 @@ package ndgroups.mbrailway.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@ToString
 @Entity
 @Table(name = "reservation")
 public class Reservation {
@@ -15,12 +22,12 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservationId;
     private String filterDate;
-    private String fromDestination;
-    private String toDestination;
+    private String origin;
+    private String destination;
+    private LocalDateTime departureTime;
     private Double price;
-    private String time;
 //    User customer;
     @CreationTimestamp
-    private LocalDateTime bookingTime;
+    private LocalDateTime reservationTime;
 
 }

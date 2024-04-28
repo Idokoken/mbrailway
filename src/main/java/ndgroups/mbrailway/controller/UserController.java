@@ -32,7 +32,7 @@ public class UserController {
 //        return "user/userProfile";
 //    }
 
-        @GetMapping("/profile")
+    @GetMapping("/profile")
     public String getUserProfile() {
         return "user/userProfile";
     }

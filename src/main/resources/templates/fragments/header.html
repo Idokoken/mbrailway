@@ -41,10 +41,21 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 second">
-                    </li>
+
+                    <div class="dropdown nav-item" th:if="${username != null and username != 'anonymousUser'}">
+                        <a class="nav-link dropdown-toggle" th:text="${username}"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/auth/register}">Register</a>
+                        <a class="nav-link" th:unless="${username != null and username != 'anonymousUser'}" th:href="@{/login}">Register/Login</a>
                     </li>
+
                 </ul>
 
             </div>

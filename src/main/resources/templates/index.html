@@ -18,11 +18,21 @@
 
 <!--main section-->
 <main>
-    <div class="container adminpage mt-5">
-        <h1 class="text-bold">welcome home</h1>
-        <div><a th:href="@{/admin/profile}">Admin Profile</a></div>
-        <div><a th:href="@{/users/profile}">User Profile</a></div>
+    <div class="home">
+        <h2 class="text-bold welcome">Welcome, <span th:text="${username}"></span></h2>
+        <span>Book your trip in minutes</span>
+        <!--    booking section-->
+        <section class="" th:replace="fragments/bookings  :: bookings"></section>
+
+        <section>
+            <div class="container adminpage mt-5">
+                <div><a th:href="@{/admin/profile}">Admin Profile</a></div>
+                <div><a th:href="@{/users/profile}">User Profile</a></div>
+            </div>
+        </section>
     </div>
+
+
 </main>
 <!--header section-->
 <footer th:replace="fragments/footer :: footer">...</footer>

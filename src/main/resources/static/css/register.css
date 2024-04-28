@@ -1,10 +1,57 @@
 .register{
-
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(117.4deg, #D1170B 12.12%, #390B08 38.19%, #390B08 58%, #D1170B 89.36%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register .logon-container{
+    width: 80%;
+    min-height: 70%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(137.36deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.381656) 29.59%, rgba(255, 255, 255, 0.23117) 67.21%, rgba(255, 255, 255, 0.1) 100%);
+    box-shadow: 0px 20px 40px -1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+.register h2{
+    font-weight: 700;
 }
 .register .form{
     display: flex;
     flex-direction: column;
+    padding: 20px;
     margin-top: 25px;
+}
+.register .input-container{
+    display: flex;
+    border-bottom: 3px solid white;
+}
+.register .input-container span{
+    margin-right: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    height: 20px;
+    width: 20px;
+    align-self: flex-end;
+}
+.register input{
+    border: none;
+    background: none;
+    padding-bottom: 5px;
+    color: white;
+    outline: none;
+}
+.register input:focus{
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
 }
 
 .register .logon a{
@@ -16,8 +63,13 @@
     color: var(--secondary-color);
 }
 
-* for medium and large screen */
-@media only screen and (min-width: 768px){
+/* for medium and large screen */
+@media only screen and (min-width: 768px) {
 /*general styling */
+    .register .logon-container{
+        width: 40%;
+        min-height: 85%;
+
+    }
 
  }
