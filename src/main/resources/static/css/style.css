@@ -3,6 +3,8 @@
 @import "footer.css";
 @import "bookings.css";
 @import "register.css";
+@import "timetable.css";
+@import "search-result.css";
 
 
 :root{
@@ -35,9 +37,6 @@ main a:hover{
     margin: 30px;
     padding-top: 30px;
 }
-
-
-
 
 
 

@@ -18,8 +18,84 @@
 
 <!--main section-->
 <main>
-    <div class="container adminpage mt-5">
-        <h1 class="text-bold">time table</h1>
+    <div class="timetable-page">
+        <section class="" th:replace="fragments/bookings  :: bookings"></section>
+        <div class="timetable">
+            <div class="head">
+                <h3>TIME TABLE FOR ABUJA - KADUNA TRAIN SERVICES</h3>
+                <h6 class="my-3">Abuja  - Kaduna</h6>
+                <h3>SPEED - 80KM PER HOUR, JOURNEY TIME - 2 HOUR 45mins</h3>
+            </div>
+            <table class="table table-borderless">
+                <thead>
+                <tr>
+                    <th scope="col">STATION</th>
+                    <th scope="col">TOTAL TIME</th>
+                    <th scope="col">DEPARTURE TIME</th>
+                    <th scope="col">ARRIVAL TIMES</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">IDU - KUBWA</th>
+                    <td>20mins</td>
+                    <td>9:30</td>
+                    <td>10:05</td>
+                </tr>
+                <tr>
+                    <th scope="row">KUBWA - RIGASA</th>
+                    <td>2hrs 30mins</td>
+                    <td>10:10</td>
+                    <td>12:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">IDU - RIGASA</th>
+                    <td>2hrs 45mins</td>
+                    <td>9:30</td>
+                    <td>12:00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="timetable">
+            <div class="head">
+                <h3>TIME TABLE FOR ABUJA - KADUNA TRAIN SERVICES</h3>
+                <h6 class="my-3">Kaduna - Abuja</h6>
+                <h3>SPEED - 90KM PER HOUR, JOURNEY TIME - 3 HOUR 5mins</h3>
+            </div>
+            <table class="table table-borderless">
+                <thead>
+                <tr>
+                    <th scope="col">STATION</th>
+                    <th scope="col">TOTAL TIME</th>
+                    <th scope="col">DEPARTURE TIME</th>
+                    <th scope="col">ARRIVAL TIMES</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">RIGASA - KUBWA</th>
+                    <td>20hrs 40mins</td>
+                    <td>08:00</td>
+                    <td>10:50</td>
+                </tr>
+                <tr>
+                    <th scope="row">RIGASA - IDU</th>
+                    <td>3hrs 5mins</td>
+                    <td>08:00</td>
+                    <td>11:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">KUBWA - IDU</th>
+                    <td>30mins</td>
+                    <td>11:00</td>
+                    <td>11:20</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
 
     </div>
 </main>

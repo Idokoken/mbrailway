@@ -10,35 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/reservations")
+//@RequestMapping("/reservations")
 public class ReservationController {
-    @Autowired
-//    private UserService userService;
 
-
-    @GetMapping("/profile")
-    public String getUserDashboard() {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if(authentication.isAuthenticated()) {
-//            String name  = authentication.getName();
-//            model.addAttribute("name", name);
-//            return "admin/user/userDashboard";
-//        }
-//        if(authentication.getPrincipal() instanceof UserDetails) {
-//            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-//            model.addAttribute("user", userDetails);
-//            return "admin/userDashboard";
-//        }
-        return "pages/login";
-    }
     @PostMapping("/reserved")
     public String filterReservedSeats(@ModelAttribute("reservation") Reservation reservation, Model model){
         return "";
     }
 
-    @GetMapping("/train")
-    public String ReservationPage(@PathVariable Integer id, Model model){
-        return "";
+    @GetMapping("/search-result")
+    public String ReservationPage(){
+        return "pages/search-result";
     }
 }
 
