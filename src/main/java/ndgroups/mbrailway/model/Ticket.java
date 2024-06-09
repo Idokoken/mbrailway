@@ -26,6 +26,7 @@ public class Ticket {
     private Reservation reservation;
     @CreationTimestamp
     private LocalDateTime bookingTime;
+    private Integer numberOfPassengers;
 
     public Ticket(User user, Reservation reservation) {
         this.user = user;

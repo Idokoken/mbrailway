@@ -8,13 +8,13 @@ import ndgroups.mbrailway.service.TicketService;
 import ndgroups.mbrailway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("/api/tickets")
+@RequestMapping("/tickets")
 public class TicketController {
     @Autowired
     private TicketService ticketService;
@@ -23,19 +23,19 @@ public class TicketController {
     @Autowired
     private ReservationService reservationService;
 
-//    @GetMapping("/user/{userId}")
-//    public List<Ticket> getUserTickets(@PathVariable Integer userId) {
-//        // Retrieve user by ID (authentication required)
-//        User user = userService.getOneUser(userId);
-//        return ticketService.getUserTickets(user);
-//    }
+    @GetMapping("/id}")
+    public String viewUserTickets(@PathVariable Integer id, Model model) {
+        List<Ticket> tickets = ticketService.getTicketsForReservation(id);
+        model.addAttribute("tickets", tickets);
+        return "user/userTickets";
+    }
 
     @PostMapping("/book")
     public Ticket bookTicket(@ModelAttribute Ticket ticket) {
         // Retrieve user by ID (authentication required)
         User user = userService.getOneUser(ticket.getId());
         // Retrieve train journey by ID
-        Reservation reservation = reservationService.getReservationById(ticket.getId());
+        Reservation reservation = reservationService.getOneReservation(ticket.getId());
         return ticketService.bookTicket(user, reservation);
     }
 

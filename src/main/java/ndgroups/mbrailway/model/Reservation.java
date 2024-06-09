@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -21,11 +22,13 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservationId;
-    private String filterDate;
+    private LocalDate filterDate;
     private String origin;
     private String destination;
+    private Integer availableSeats;
     private LocalDateTime departureTime;
     private Double price;
+    private String time;
 //    User customer;
     @CreationTimestamp
     private LocalDateTime reservationTime;

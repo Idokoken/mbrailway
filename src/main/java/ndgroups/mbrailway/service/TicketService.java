@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import ndgroups.mbrailway.model.Reservation;
 import ndgroups.mbrailway.model.Ticket;
 import ndgroups.mbrailway.model.User;
+import ndgroups.mbrailway.repository.ReservationRepository;
 import ndgroups.mbrailway.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +16,22 @@ import java.util.List;
 public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     public Ticket getTicketById(Integer id) {
         return ticketRepository.findById(id).
-                orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+                orElseThrow(() -> new EntityNotFoundException("no ticket with id of: " + id));
     }
+    public List<Ticket> getTicketsForReservation(Integer id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+        return ticketRepository.findByReservation(reservation);
+    }
+    public List<Ticket> getUsersTickets() {
 
-//    public List<Ticket> getUserTickets(User user) {
-//        return ticketRepository.findByUser(user);
-//    }
+        return ticketRepository.findAll();
+    }
 
     public Ticket bookTicket(User user, Reservation reservation) {
         Ticket ticket = new Ticket();
@@ -35,7 +43,7 @@ public class TicketService {
 
     public void cancelTicket(Integer id) {
         if (!ticketRepository.existsById(id)) {
-            throw new EntityNotFoundException("User not found with id: " + id);
+            throw new EntityNotFoundException("no ticket with id of: " + id);
         }
         ticketRepository.deleteById(id);
     }

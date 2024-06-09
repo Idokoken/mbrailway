@@ -1,38 +1,79 @@
 package ndgroups.mbrailway.controller;
 
+import ndgroups.mbrailway.model.Reservation;
+import ndgroups.mbrailway.model.Ticket;
 import ndgroups.mbrailway.model.User;
+import ndgroups.mbrailway.service.ReservationService;
+import ndgroups.mbrailway.service.TicketService;
+import ndgroups.mbrailway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
+import java.util.List;
+
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/test")
 public class AdminController {
-//    @Autowired
-//    private CustomUserDetailsService customUserDetailsService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ReservationService reservationService;
+    @Autowired
+    private TicketService ticketService;
 
-    @GetMapping("/home")
-    public String getAdminDashboard() {
+    @GetMapping("/")
+    public String getAdminDashboard(Model model) {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        model.addAttribute("reservations", reservations);
         return "admin/adminDashboard";
     }
-    @GetMapping("/profile")
-    public String getAdminProfile(){
-        return "admin/adminProfile";
+    @GetMapping("/reservation/add")
+    public String addReservationForm(Model model) {
+        model.addAttribute("reservation", new Reservation());
+        return "admin/addReservation";
     }
-//    @GetMapping("/profile")
-//    public String getAdminProfile(Model model, Principal principal){
-//        UserDetails userDetails = customUserDetailsService.loadUserByUsername(principal.getName());
-//        model.addAttribute("user", userDetails);
-//        return "admin/adminProfile";
-//    }
 
-    @RequestMapping("/delete/{id}")
-    public String delUser(@PathVariable Integer id, Model model) {
-        model.addAttribute("message", "student successfully deleted");
-        return "redirect:/admin";
+    @PostMapping("/reservation/add")
+    public String addReservation(@ModelAttribute Reservation reservation) {
+        reservationService.createReservation(reservation);
+        return "redirect:/test";
     }
+    @GetMapping("/reservation/edit/{id}")
+    public String editReservationForm(@PathVariable Integer id, Model model) {
+        Reservation reservation  = reservationService.getOneReservation(id);
+        model.addAttribute("reservation", reservation);
+        return "admin/editReservation";
+    }
+    @PostMapping("/reservation/edit/{id}")
+    public String editReservation(@PathVariable Integer id, @ModelAttribute Reservation reservation) {
+        reservationService.updateReservation(id, reservation);
+        return "redirect:/test";
+    }
+    @GetMapping("/reservation/delete/{id}")
+    public String deleteJourney(@PathVariable Integer id, Model model) {
+        reservationService.deleteReservation(id);
+        return "redirect:/test";
+    }
+    @GetMapping("/users")
+    public String getAllUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "admin/users";
+    }
+    @GetMapping("/tickets")
+    public String viewTickets(Model model) {
+        List<Ticket> tickets = ticketService.getUsersTickets();
+        model.addAttribute("tickets", tickets);
+        return "admin/tickets";
+    }
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+        return "redirect:/admin/users";
+    }
+
+
 }

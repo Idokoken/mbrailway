@@ -42,12 +42,16 @@
     transform: translate(-50%, -50%);
 }
 
-.bookings .details .detail1 div input{
+.bookings .details .detail1 div select{
     outline: none;
     font-weight: 700;
     margin: 10px 0;
     border: none;
     max-width: 100%;
+    color: rgba(0, 0, 0, 0.7);
+}
+.bookings .details .detail1 div select option{
+    margin-bottom: 5px;
 }
 .bookings .details .detail2 {
     display: grid;
@@ -97,6 +101,9 @@
        grid-template-columns: 45% 45%;
        align-items:center;
        grid-gap: 0;
+    }
+    .bookings .details .detail1 div select{
+        max-width: 80%;
     }
     .bookings .details .detail1 div.one{
         border: 2px solid rgba(0, 0, 0, 0.7);
