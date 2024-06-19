@@ -19,10 +19,53 @@
 
 <!--main section-->
 <main>
-    <div class="user">
-        <h3>All User</h3>
+    <div class="admin">
+        <div class="usersPage otherPage">
+            <h3 class="m-2">All Users</h3>
+            <div class="userInfo">
+                <a href="/test/users/add" class="btn add my-2">Add New User</a>
+                <table class="table table-striped" th:if="${#lists.size(users) > 0}">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.username}"></td>
+                        <td th:text="${user.role}"></td>
+                        <td>
+                            <a class="edit" th:href="@{/test/users/edit/{id}(id=${user.id})}">
+                                <i class="fa-regular fas fa-edit"></i>
+                            </a>
+                            <a class="delete" th:href="@{/test/users/delete/{id}(id=${user.id})}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
+            <div class="no-info my-3" th:if="${#lists.size(users) == 0}">
+                <h5>There is no registered user at the moment</h5>
+                <p>Please create users</p>
+            </div>
+
+            <div class="back my-4">
+                <a href="/test">Back
+                <span>
+                     <i class="fa-solid fa-home"></i>
+                </span>
+                </a>
+            </div>
+        </div>
     </div>
+
 
 
 </main>

@@ -21,10 +21,12 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private ReservationService reservationService;
+
+
     @Autowired
     private TicketService ticketService;
 
-    @GetMapping("/")
+    @GetMapping
     public String getAdminDashboard(Model model) {
         List<Reservation> reservations = reservationService.getAllReservations();
         model.addAttribute("reservations", reservations);

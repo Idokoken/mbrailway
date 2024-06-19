@@ -23,7 +23,7 @@ public class TicketController {
     @Autowired
     private ReservationService reservationService;
 
-    @GetMapping("/id}")
+    @GetMapping("/{id}")
     public String viewUserTickets(@PathVariable Integer id, Model model) {
         List<Ticket> tickets = ticketService.getTicketsForReservation(id);
         model.addAttribute("tickets", tickets);
