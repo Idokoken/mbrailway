@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReservationService {
@@ -31,7 +30,7 @@ public class ReservationService {
     public List<Reservation> searchReservations(String origin, String destination, LocalDate filterDate,
                                             Integer passengers) {
         List<Reservation> listReservations = reservationRepository
-                .findByOriginAndDestinationAndFilterDateAndAvailableSeats(origin, destination, filterDate,
+                .findByOriginAndDestinationAndDepartureDateAndAvailableSeats(origin, destination, filterDate,
                         passengers);
         return listReservations;
     }

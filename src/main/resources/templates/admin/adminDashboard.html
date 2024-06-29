@@ -25,20 +25,20 @@
        <section class="menu">
            <a th:href="@{/test/reservations}">
                <div class="one">
-                   <p><span><i class="fa-solid fa-users"></i></span>Reservations</p>
-                   <h6>10</h6>
+                   <p><span><i class="fa-solid fa-train"></i></i></span>Train Bookings</p>
+                   <h6 th:text="${#lists.size(reservations)}"></h6>
                </div>
            </a>
            <a th:href="@{/test/users}">
                <div class="one">
                    <p><span><i class="fa-solid fa-users"></i></span>Users</p>
-                   <h6>10</h6>
+                   <h6 th:text="${#lists.size(users)}"></h6>
                </div>
            </a>
            <a th:href="@{/test/tickets}">
                <div class="one">
-                   <p><span><i class="fa-solid fa-users"></i></span>Tickets</p>
-                   <h6>10</h6>
+                   <p><span><i class="fa-solid fa-ticket"></i></span>Tickets</p>
+                   <h6 th:text="${#lists.size(tickets)}"></h6>
                </div>
            </a>
        </section>
@@ -61,7 +61,7 @@
                    <td th:text="${reservation.id}"></td>
                    <td th:text="${reservation.origin}"></td>
                    <td th:text="${reservation.destination}"></td>
-                   <td th:text="${reservation.reservationDate}"></td>
+                   <td th:text="${reservation.departureDate}"></td>
                    <td th:text="${reservation.availableSeats}"></td>
                    <td>
                        <a th:href="@{/admin/reservations/edit/{id}(id=${reservation.id})}">Edit</a>

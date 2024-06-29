@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-    List<Reservation> findByOriginAndDestinationAndFilterDateAndAvailableSeats(
+    List<Reservation> findByOriginAndDestinationAndDepartureDateAndAvailableSeats(
             String origin, String destination, LocalDate filterDate, Integer availableSeats );
 
 }

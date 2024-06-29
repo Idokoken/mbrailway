@@ -79,6 +79,16 @@
 .admin .otherPage .delete{
    color: red;
 }
+.admin .otherPage .back{
+   background-color: rgba(186, 0, 24, 0.1);
+   border: 2px solid rgba(0, 0, 0, 0.1);
+   border-radius: 10px;
+   width: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px 15px;
+}
 .admin .otherPage .back span{
    color: red;
 }
@@ -88,13 +98,37 @@
 .admin .otherPage .no-info h5{
     text-align: center;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
 }
 .admin .otherPage .no-info p{
     text-align: center;
     font-weight: 600;
     font-size: 20px;
  }
+ .admin .otherPage table{
+     font-size: 10px;
+     width: 100%;
+     table-layout: fixed;
+     border-collapse: collapse;
+ }
+ .admin .otherPage form{
+     width: 60%;
+  }
+  .admin .otherPage form .input-group-append span{
+        background: var(--primary-color);
+        color: white;
+    }
+ .admin .otherPage .step-back{
+    background: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+ }
+ .admin .add-reservationPage button{
+     background: var(--primary-color);
+     color: white;
+     border-radius: 10px;
+  }
+
 
 
 /* for medium and large screen */
@@ -110,5 +144,16 @@
 .admin .reservations table{
     font-size: 16px;
 }
+.admin .otherPage table{
+    font-size: 16px;
+}
+.admin .otherPage form{
+     width: 40%;
+  }
+ .admin .add-reservationPage form{
+       max-width: 50%;
+       margin-left: auto;
+       margin-right: auto;
+  }
 
  }

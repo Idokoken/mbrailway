@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,15 +16,15 @@
     );
   }
 
-  h4 {
+  .newsletter h4 {
     margin: 0;
     margin-bottom: 30px;
     color: white;
   }
-  .subscribe {
+  .newsletter .subscribe {
     display: flex;
   }
-  input {
+  .newsletter input {
     padding: 8px 5px;
     padding-left: 15px;
     width: 150px;
@@ -32,7 +32,7 @@
     border-radius: 20px 0 0 20px;
     ${Tablet({ width: "250px" })}
   }
-  button {
+  .newsletter button {
     padding: 8px 5px;
     padding-right: 15px;
     background: black;
@@ -43,14 +43,14 @@
     </style>
 </head>
 <body>
-<Wrapper>
-    <div className="newsletter">
+
+    <div class="newsletter" th:fragment="newsLetter">
         <h4>Get breaking news delivered to your inbox</h4>
-        <div className="suscribe">
+        <div class="subscribe">
             <input type="email" placeholder="enter email" />
             <button>Subscribe</button>
         </div>
     </div>
-</Wrapper>
+
 </body>
 </html>

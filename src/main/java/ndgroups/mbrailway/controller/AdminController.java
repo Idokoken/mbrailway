@@ -21,24 +21,26 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private ReservationService reservationService;
-
-
     @Autowired
     private TicketService ticketService;
 
     @GetMapping
     public String getAdminDashboard(Model model) {
         List<Reservation> reservations = reservationService.getAllReservations();
+        List<User>users  =  userService.getAllUsers();
+        List<Ticket>tickets  = ticketService.getUsersTickets();
         model.addAttribute("reservations", reservations);
+        model.addAttribute("users", users);
+        model.addAttribute("tickets", tickets);
         return "admin/adminDashboard";
     }
-    @GetMapping("/reservation/add")
+    @GetMapping("/reservations/add")
     public String addReservationForm(Model model) {
         model.addAttribute("reservation", new Reservation());
         return "admin/addReservation";
     }
 
-    @PostMapping("/reservation/add")
+    @PostMapping("/reservations/add")
     public String addReservation(@ModelAttribute Reservation reservation) {
         reservationService.createReservation(reservation);
         return "redirect:/test";

@@ -19,38 +19,54 @@
 
 <!--main section-->
 <main>
-    <div class="ticketPage">
-        <h3>All Tickets</h3>
-        <h1>Tickets for Journey</h1>
-        <table>
-            <thead>
-            <tr>
-                <th>Ticket ID</th>
-                <th>User</th>
-                <th>Number of Passengers</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="ticket : ${tickets}">
-                <td th:text="${ticket.id}"></td>
-                <td th:text="${ticket.user.username}"></td>
-                <td th:text="${ticket.numberOfPassengers}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="no-info my-3" th:if="${#lists.size(users) == 0}">
-            <h5>There is no registered user at the moment</h5>
-            <p>Please create users</p>
-        </div>
+    <div class="admin">
+        <div class="ticketPage otherPage">
+            <h3>All Tickets</h3>
+            <h4 class="my-3">Tickets for Journey</h4>
 
-        <div class="back my-4">
-            <a href="/test">Back
-                <span>
+            <form action="/" class="my-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="find ticket"
+                           aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">Search</span>
+                    </div>
+                </div>
+            </form>
+
+            <div class="ticketInfo">
+                <table class="table table-striped my-3" th:if="${#lists.size(tickets) > 0}">
+                    <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>User</th>
+                        <th>Number of Passengers</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="ticket : ${tickets}">
+                        <td th:text="${ticket.id}"></td>
+                        <td th:text="${ticket.user.username}"></td>
+                        <td th:text="${ticket.numberOfPassengers}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="no-info mb-3 mt-4" th:if="${#lists.size(tickets) == 0}">
+                <h5>There is no Ticket available at the moment</h5>
+                <p>Please make a reservation</p>
+            </div>
+
+            <div class="back my-4">
+                <a href="/test">Back
+                    <span>
                      <i class="fa-solid fa-home"></i>
                 </span>
-            </a>
-        </div>
+                </a>
+            </div>
 
+        </div>
     </div>
 
 

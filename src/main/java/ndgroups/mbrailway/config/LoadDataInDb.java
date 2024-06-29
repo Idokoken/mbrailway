@@ -3,6 +3,7 @@ package ndgroups.mbrailway.config;
 
 import ndgroups.mbrailway.model.Role;
 import ndgroups.mbrailway.model.User;
+import ndgroups.mbrailway.repository.ReservationRepository;
 import ndgroups.mbrailway.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +16,9 @@ import java.util.List;
 public class LoadDataInDb{
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
+
 
     @Bean
     public CommandLineRunner initializeDatabase() {

@@ -22,13 +22,13 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservationId;
-    private LocalDate filterDate;
     private String origin;
     private String destination;
-    private Integer availableSeats;
+    private LocalDate departureDate;
     private LocalDateTime departureTime;
+    private Integer availableSeats;
     private Double price;
-    private String time;
+    private String TrainName;
 //    User customer;
     @CreationTimestamp
     private LocalDateTime reservationTime;
