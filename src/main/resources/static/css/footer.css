@@ -48,7 +48,7 @@ footer .copyWright {
     align-items: center;
   }
 footer .icon{
-    margin-right: 20px;
+    margin-right: 10px;
     width: 40px;
     height: 40px;
     border: 2px solid white;
@@ -85,4 +85,5 @@ footer .desc{
     footer .item-brand{
         margin-top: 20px;
     }
+
  }

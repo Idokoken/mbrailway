@@ -19,64 +19,77 @@
 <!--contact section-->
 <main>
     <div class="contact-page">
-        <div class="hero">
+        <section class="hero">
             <div class='hero-bg'></div>
-            <h2>Contact Us</h2>
-        </div>
+            <h1>Contact Us</h1>
+        </section>
 
-        <div class="address">
+        <section class="address">
             <div class="one">
-                <span class="me-3"><i class="fa-solid fa-train"></i></span>
+                <span class="me-1"><i class="fa-solid icon fa-location-dot"></i></span>
                 <div class="">
-                    <h3>physical office</h3>
-                    <p>Our mission is to provide
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi hic incidunt
-                        molestiae
-                    </p>
+                    <h4>Office Address</h4>
+                    <p>30 Tikko Road Idu, Federal Capital Territory, Abuja</p>
                 </div>
             </div>
             <div class="one">
-                <span class="me-3"><i class="fa-solid fa-train"></i></span>
+                <span class="me-1"><i class="fa-solid icon fa-phone"></i></span>
                 <div class="">
-                    <h3>physical office</h3>
-                    <p>Our mission is to provide
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi hic incidunt
-                        molestiae
-                    </p>
+                    <h4>Our Hotline</h4>
+                    <p>+2348034767732</p>
+                    <p>+2348037766988</p>
                 </div>
             </div>
             <div class="one">
-                <span class="me-3"><i class="fa-solid fa-train"></i></span>
+                <span class="me-1"><i class="fa-solid icon fa-envelope-circle-check"></i></span>
                 <div class="">
-                    <h3>physical office</h3>
-                    <p>Our mission is to provide
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi hic incidunt
-                        molestiae
-                    </p>
+                    <h4>Email Address</h4>
+                    <p>Info@mbrailway.com</p>
+                    <p>Support@mbrailway.com</p>
                 </div>
             </div>
-        </div>
-        <div class="form container col-md-8  mt-4">
+        </section>
+        <section class="map">
+            <h3>Address on Map</h3>
+            <div class="map-container">
+                <img src="/images/contact-map.png" alt="map">
+            </div>
+        </section>
+        <section class="message">
+            <h3>Send Us a Message</h3>
+            <p class="my-2">Don't hesitate to reach out to us, we are always ready to answer and address your needs</p>
+            <div class="form container col-md-8  mt-4">
+                <form action="#" th:action="@{/contact}" th:object="${personForm}" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" th:field="*{name}">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone_number" th:field="*{phoneNumber}">
+                        <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">number Error</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" th:field="*{email}">
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Write Message</label>
+                        <textarea rows="6"  class="form-control" id="message" th:field="*{message}"></textarea>
+                        <span th:if="${#fields.hasErrors('message')}" th:errors="*{massage}">Message Error</span>
+                    </div>
+                    <div class="send">
+                        <button type="submit" class="btn">Send Message</button>
+                    </div>
 
 
-            <form action="#" th:action="@{/contact}" th:object="${personForm}" method="post">
-                <table>
-                    <tr>
-                        <td>Name:</td>
-                        <td><input type="text" th:field="*{name}" /></td>
-                        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
-                    </tr>
-                    <tr>
-                        <td>Age:</td>
-                        <td><input type="text" th:field="*{age}" /></td>
-                        <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Submit</button></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+                </form>
+            </div>
+        </section>
+
     </div>
 </main>
 
