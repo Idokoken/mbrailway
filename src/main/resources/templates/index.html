@@ -20,14 +20,17 @@
 <!--main section-->
 <main>
     <div class="home">
-        <h2 class="text-bold welcome">Welcome, <span th:text="${username}"></span></h2>
-        <span>Book your trip in minutes</span>
+        <section class="hero">
+<!--            <div class='hero-bg'></div>-->
+            <h2 class="text-bold welcome">Welcome, <span th:text="${username}"></span></h2>
+            <p>Book your trip in minutes</p>
+        </section>
         <!--    booking section-->
         <section class="" th:replace="fragments/bookings  :: bookings"></section>
 
         <section class="message p-3 mt-5">
             <div class="one">
-                <h3>It is more just a Trip</h3>
+                <h3>It is more than just a Trip</h3>
                 <p>We are your one-stop solution to everything travel from our array of travel options</p>
             </div>
             <div class="two">
@@ -38,24 +41,32 @@
             <div class="contents">
                 <h3>Book your Train Ticket in 3 Simple Steps</h3>
                 <div class="step1">
-                    <span class="me-3"><i class="fa-solid fa-train"></i></span>
+                    <span class="me-3"><i class="fa-solid fa-user-plus"></i></span>
                     <div class="">
                         <h6>Create Account</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, reiciendis?</p>
+                        <p>Go to the official MBrailway booking website and create an account or sign in if you
+                           already have an account.
+                        </p>
                     </div>
                 </div>
                 <div class="step2">
                     <span class="me-3"><i class="fa-solid fa-train"></i></span>
                     <div class="">
-                        <h6>Create Account</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, reiciendis?</p>
+                        <h6>Select Your Journey</h6>
+                        <p>
+                            Enter your departure and destination stations, choose your travel date, and select
+                            the preferred train from the available options
+                        </p>
                     </div>
                 </div>
                 <div class="step3">
-                    <span class="me-3"><i class="fa-solid fa-train"></i></span>
+                    <span class="me-3"><i class="fa-solid fa-credit-card"></i></span>
                     <div class="">
-                        <h6>Create Account</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, reiciendis?</p>
+                        <h6>Make Payment and Confirm</h6>
+                        <p>
+                            Provide your payment details, confirm the booking, and receive your e-ticket via email or
+                            SMS
+                        </p>
                     </div>
                 </div>
             </div>
@@ -63,7 +74,7 @@
                 <img src="/images/steps.png" alt="steps">
             </div>
         </section>
-        <section class="" th:replace="fragments/newsLetter  :: newsLetter"></section>
+        <section class="newsletter" th:replace="fragments/newsletter  :: newsletter"></section>
     </div>
 
 

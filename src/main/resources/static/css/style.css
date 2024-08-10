@@ -7,7 +7,7 @@
 @import "search-result.css";
 @import "legal.css";
 @import "admin.css";
-@import "newsletter";
+@import "newsletter.css";
 
 
 :root{
@@ -36,9 +36,25 @@ main a:hover{
    font-weight: 700;
 }
 
-.home .welcome{
-    margin: 30px;
-    padding-top: 30px;
+.home .hero .welcome{
+    padding-top: 20px;
+}
+.home .hero p{
+    padding-top: 10px;
+}
+.home .hero{
+    min-height: 25vh;
+    background: var(--primary-color);
+    margin: 0;
+    padding: 20px;
+    color: white;
+}
+.home .hero .hero-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
 .home .message{
     display: grid;
@@ -50,10 +66,10 @@ main a:hover{
 .home .message .one h3{
     font-weight: 700;
     font-style: italic;
-    font-size: 32px;
+    font-size: 20px;
 }
 .home .message .one p{
-    font-size: 20px;
+    font-size: 16px;
 }
 .home .message .two{
     height: 30vh;
@@ -74,9 +90,11 @@ main a:hover{
 .home .reservation-steps .contents h3{
     font-weight: 700;
     font-style: italic;
-    font-size: 32px;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
-.home .reservation-steps .contents .step1, .home .reservation-steps .contents .step2, .home .reservation-steps .contents .step3 {
+.home .reservation-steps .contents .step1, .home .reservation-steps .contents .step2,
+.home .reservation-steps .contents .step3 {
     display: flex;
     align-items: center;
 }
@@ -89,13 +107,14 @@ main a:hover{
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    padding: 5px 7px;
 }
 .home .reservation-steps .contents h6{
     font-weight: 600;
+    margin-top: 5px;
 }
 .home .reservation-steps .img-container{
     height: 30vh;
-
 }
 .home .reservation-steps .img-container img{
     object-fit: cover;
@@ -244,23 +263,63 @@ main a:hover{
 .about-page .offer{
     display: grid;
     grid-template-columns: 100%;
+    padding: 20px;
+    justify-content: center;
 }
 .about-page .offer .content h3{
     font-weight: 700;
     text-align: center;
-    margin: 20px 0;
+    margin: 0 0 20px 0;
 }
+.about-page .offer .content .offers div{
+     display: flex;
+     align-items: center;
+}
+.about-page .offer .content .offers span{
+     margin: 4px;
+     margin-left: 0;
+     margin-right: 10px;
+     width: 40px;
+     height: 40px;
+     border: 2px solid white;
+     border-radius: 50%;
+     padding: 7px;
+     color: white;
+     background: var(--primary-color);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+ }
 .about-page .offer .gallery{
     display: grid;
     grid-template-columns: 45% 45%;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 10px;
+    justify-content: center;
+    background: rgba(0 ,0, 0, 0.1);
+    padding: 10px;
+}
+.about-page .offer .gallery .item1{
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+.about-page .offer .gallery .item2{
+    grid-column: 2 / 3;
+    grid-row: 2 / 5;
+
+}
+.about-page .offer .gallery .item3{
+    grid-column: 1 / 2;
+    grid-row: 3 / 6;
 }
 .about-page .offer .gallery .img-container{
-    width: 100px;
-    length: 100px;
+    width: 100%;
+    height: 100%;
 }
 .about-page .offer .gallery img{
     width: 100%;
-    length: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -341,6 +400,12 @@ main a:hover{
     grid-template-columns: 45% 45%;
      grid-gap: 30px;
 }
+.home .message .one h3{
+    font-size: 32px;
+}
+.home .message .one p{
+    font-size: 20px;
+}
 .home .message .two{
     height: 40vh;
 }
@@ -350,6 +415,9 @@ main a:hover{
 }
 .home .reservation-steps .img-container{
     height: 40vh;
+}
+.home .reservation-steps .contents h3{
+    font-size: 32px;
 }
 
 /* for contact page */
@@ -376,6 +444,7 @@ contact-page .hero {
 .about-page .offer{
     flex-direction: row;
     grid-template-columns: 45% 45%;
+    padding: 20px 30px;
 }
 .about-page .review h3{
     font-size: 28px;
@@ -383,6 +452,7 @@ contact-page .hero {
 .about-page .review .customers{
     flex-direction: row;
     padding: 30px;
+    padding-top: 20px;
 }
 .about-page .review .customers .customer1{
     padding: 20px;
