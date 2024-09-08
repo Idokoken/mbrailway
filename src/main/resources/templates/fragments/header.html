@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">
                 <img src="/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top me-2">
-                MBrailway
+                M<span>B</span>railway
             </a>
             <button
                     class="navbar-toggler"
@@ -47,9 +47,10 @@
                             Dropdown link
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <li th:if="${email != null}">
+                                <a class="dropdown-item" th:href="@{/users/dashboard/{id}(id=${id})}">Dashboard</a>
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
                         </ul>
                     </div>
                     <li class="nav-item">

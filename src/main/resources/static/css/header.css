@@ -14,6 +14,10 @@ header .navbar-brand{
     color: var(--primary-color) !important;
      font-weight: 700;
 }
+header .navbar-brand span{
+    color: black;
+
+}
 
 header .first li a.nav-link{
     color: var(--primary-color)!important;

@@ -44,17 +44,27 @@ main a:hover{
 }
 .home .hero{
     min-height: 25vh;
-    background: var(--primary-color);
+    /** background: var(--primary-color); **/
     margin: 0;
-    padding: 20px;
     color: white;
+    position: relative;
+    z-index: -2;
+    background-image: url("/images/main-hero1.png");
+    background-size: cover;
 }
 .home .hero .hero-bg{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    /** background-color: rgba(209, 23, 11, 0.5); **/
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: -1;
+}
+.home .hero h2, .home .hero p{
+    margin-left: 20px;
+}
+.home .hero h2 span{
+    color: rgba(209, 23, 11, 1);
 }
 .home .message{
     display: grid;
@@ -117,7 +127,7 @@ main a:hover{
     height: 30vh;
 }
 .home .reservation-steps .img-container img{
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
 }
@@ -297,7 +307,7 @@ main a:hover{
     grid-template-rows: auto auto auto auto auto;
     gap: 10px;
     justify-content: center;
-    background: rgba(0 ,0, 0, 0.1);
+    background:  rgba(209, 23, 11, 0.2);
     padding: 10px;
 }
 .about-page .offer .gallery .item1{
@@ -321,6 +331,7 @@ main a:hover{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .about-page .review h3{
@@ -352,14 +363,14 @@ main a:hover{
 .about-page .review .customers .customer1 .img-container{
     margin: 3px 0;
     width: 50px;
-    length: 50px;
+    height: 50px;
     border: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     background: var(--primary-color);
 }
 .about-page .review .customers .customer1 .img-container img{
     width: 100%;
-    length: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -395,6 +406,9 @@ main a:hover{
 @media only screen and (min-width: 768px){
 /*general styling */
 
+.home .hero{
+     min-height: 35vh;
+}
 .home .message{
     display: grid;
     grid-template-columns: 45% 45%;
@@ -412,10 +426,16 @@ main a:hover{
 .home .reservation-steps{
     grid-template-columns: 45% 45%;
     grid-gap: 30px;
+    place-items: center;
 }
 .home .reservation-steps .img-container{
     height: 40vh;
+    padding: 0;
 }
+.home .reservation-steps .img-container img{
+    margin: 0;
+}
+
 .home .reservation-steps .contents h3{
     font-size: 32px;
 }

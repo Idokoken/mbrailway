@@ -13,11 +13,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/dashboard/{id}")
     public String getUserProfile(@PathVariable Integer id, Model model) {
         User user = userService.getOneUser(id);
         model.addAttribute("user", user);
-        return "user/userProfile";
+        return "user/userDashboard";
     }
 
     @GetMapping("/edit/{id}")
@@ -30,7 +30,7 @@ public class UserController {
     public String updateUser(Model model, @PathVariable Integer id, @ModelAttribute("user") User
             updateUser)  {
         userService.updateUser(id, updateUser);
-        return "redirect:/users/" + id;
+        return "redirect:/users/dashboard/" + id;
     }
 
 

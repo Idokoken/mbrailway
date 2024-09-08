@@ -4,6 +4,7 @@
     margin: 30px;
     border: 2px solid rgba(0, 0, 0, 0.7);
     border-radius: 10px;
+
 }
 .bookings .details{
     display: grid;

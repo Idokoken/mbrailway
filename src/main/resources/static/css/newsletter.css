@@ -1,13 +1,7 @@
 .newsletter {
     padding: 30px;
     color: white;
-    background: linear-gradient(
-      93.29deg,
-      #fc40c7 0.19%,
-      #1e44a6 26.84%,
-      #146765 70.85%,
-      #04970a 100%
-    );
+    background: rgba(209, 23, 11, 1);
   }
 
   .newsletter h4 {
@@ -24,7 +18,6 @@
     width: 150px;
     border: none;
     border-radius: 20px 0 0 20px;
-    ${Tablet({ width: "250px" })}
   }
   .newsletter button {
     padding: 8px 5px;
@@ -34,3 +27,12 @@
     border: none;
     border-radius: 0 20px 20px 0;
   }
+
+
+ /* for medium and large screen */
+ @media only screen and (min-width: 768px){
+    .newsletter input {
+        width: 250px;
+      }
+
+ }
