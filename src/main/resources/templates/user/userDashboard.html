@@ -15,8 +15,23 @@
 <body>
    <!--header section-->
     <header th:replace="fragments/header :: header">...</header>
-    <main>
+    <main class="user">
         <h2>User Profile and dashboard</h2>
+       <div class="userInfo">
+           <p th:if="${username != null and username != 'anonymousUser'}">Username:
+               <span th:text="${#authentication.principal.username}"></span>
+           </p>
+           <p th:if="${username != null and username != 'anonymousUser'}">Email:
+               <span th:text="${#authentication.principal.email}"></span>
+           </p>
+           <p th:if="${username != null and username != 'anonymousUser'}">User ID:
+               <span th:text="${#authentication.principal.id}"></span>
+           </p>
+       </div>
+        <div class="">
+            <h4 th:text="${user.username}"></h4>
+            <h4 th:text="${user.email}"></h4>
+        </div>
     </main>
    <!--footer section-->
    <footer th:replace="fragments/footer :: footer">...</footer>

@@ -22,7 +22,16 @@
     <div class="home">
         <section class="hero">
             <div class='hero-bg'></div>
-            <h2 class="text-bold welcome">Welcome, <span th:text="${username}"></span></h2>
+            <h2 class="text-bold welcome">
+                Welcome
+                <span th:if="${username != null and username != 'anonymousUser'}" th:text="${username}"></span>
+                <span th:if="${username != null and username == 'anonymousUser'}">to MBrailway</span>
+
+                <p th:if="${username != null and username != 'anonymousUser'}">Username:
+                    <span th:text="${#authentication.principal.username}"></span>
+                </p>
+
+            </h2>
             <p>Book your trip in minutes</p>
         </section>
         <!--    booking section-->

@@ -31,6 +31,7 @@ public class User {
     @NotBlank(message = "password is required")
     private String password;
 //    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false)
     private String role;
     @CreationTimestamp
     private LocalDateTime createdAt;

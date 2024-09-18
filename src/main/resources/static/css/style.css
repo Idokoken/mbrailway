@@ -7,6 +7,7 @@
 @import "search-result.css";
 @import "legal.css";
 @import "admin.css";
+@import "user.css";
 @import "newsletter.css";
 
 
@@ -398,8 +399,27 @@ main a:hover{
     color: white;
     font-weight: 700;
 }
+.faq-page{
 
-
+}
+.faq-page .faqs{
+    padding: 20px;
+}
+.faq-page .desc{
+    min-height: 20vh;
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 20px 20px;
+}
+.faq-page .faqs h1{
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.faq-page .faqs h5{
+    font-size: 22px;
+    font-weight: 600;
+}
 
 
 /* for medium and large screen */

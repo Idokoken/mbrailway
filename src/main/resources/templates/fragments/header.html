@@ -47,8 +47,8 @@
                             Dropdown link
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li th:if="${email != null}">
-                                <a class="dropdown-item" th:href="@{/users/dashboard/{id}(id=${id})}">Dashboard</a>
+                            <li>
+                                <a class="dropdown-item" th:href="@{/users/dashboard/{id}(id=${#authentication.principal.id})}">Dashboard</a>
                             </li>
                             <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
                         </ul>

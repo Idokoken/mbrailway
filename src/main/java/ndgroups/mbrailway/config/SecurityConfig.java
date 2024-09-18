@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/users/**").hasRole("USER")
+//                        .requestMatchers("/users/**").hasRole("USER")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
@@ -44,6 +44,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(){
+
         return userDetailsService;
     }
 
@@ -70,5 +71,7 @@ public class SecurityConfig {
         authenticationProvider.setUserDetailsService(userDetailsService);
         return authenticationProvider;
     }
+
+
 
 }
