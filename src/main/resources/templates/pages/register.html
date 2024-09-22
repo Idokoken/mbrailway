@@ -16,6 +16,9 @@
 <div class="register">
 
     <div class="logon-container">
+        <div class="logo">
+            <img src="/images/logo.png" alt="brand">
+        </div>
         <div class='top-section'>
             <h2 class='mt-3 text-center'>Sign Up</h2>
         </div>
@@ -26,23 +29,24 @@
                     <span><i class="fa-solid fa-user"></i></span>
                     <input type="text" id="username" th:field="*{username}" class="form-control" name="username" />
                 </div>
-
                 <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></p>
             </div>
+            
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <div class="input-container">
                     <span><i class="fa-solid fa-envelope"></i></span>
                     <input type="email" id="email" th:field="*{email}" class="form-control" name="email" />
                 </div>
-
                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
             </div>
+            
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <div class="input-container">
+                <div class="input-container password-container">
                     <span><i class="fa-solid fa-lock"></i></span>
                     <input type="password" class="form-control" id="password" th:field="*{password}" name="password" />
+                    <span class="eyeicon" id="eyeicon"><img id="eye" src="/images/eye.png" alt="eye-icon"></i></span>
                 </div>
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></p>
             </div>
@@ -62,5 +66,19 @@
 <script type="text/javascript" th:src="@{/js/solid.js}"></script>
 <script type="text/javascript" th:src="@{/js/brands.js}"></script>
 <script type="text/javascript" th:src="@{/js/fontawesome.js}"></script>
+<script>
+    let eye  = document.getElementById("eye");
+    let password  = document.getElementById("password");
+
+    eye.onclick = function() {
+        if(password.type == "password") {
+          password.type = "text";
+          eye.src = "/images/eye-slash.png";
+        } else{
+          password.type = "password";
+          eye.src = "/images/eye.png";
+        }
+    }
+</script>
 </body>
 </html>

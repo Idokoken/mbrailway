@@ -15,23 +15,49 @@
 <body>
    <!--header section-->
     <header th:replace="fragments/header :: header">...</header>
-    <main class="user">
-        <h2>User Profile and dashboard</h2>
-       <div class="userInfo">
-           <p th:if="${username != null and username != 'anonymousUser'}">Username:
-               <span th:text="${#authentication.principal.username}"></span>
-           </p>
-           <p th:if="${username != null and username != 'anonymousUser'}">Email:
-               <span th:text="${#authentication.principal.email}"></span>
-           </p>
-           <p th:if="${username != null and username != 'anonymousUser'}">User ID:
-               <span th:text="${#authentication.principal.id}"></span>
-           </p>
-       </div>
-        <div class="">
-            <h4 th:text="${user.username}"></h4>
-            <h4 th:text="${user.email}"></h4>
+    <main>
+        <div class="user">
+            <div class="title">
+                <div class="user-profile">
+                    <a th:href="@{/}"><i class="fa-solid fa-user icon"></i></a>
+                    <h5>user</h5>
+                </div>
+                <div class="user-trans">
+                    <a th:href="@{/}"><i class="fa-solid fa-money-bill-transfer icon"></i></a>
+                    <h5>Transactions</h5>
+                    </p>
+                </div>
+                <div class="user-tickets">
+                    <a th:href="@{/}"><i class="fa-solid fa-ticket icon"></i></a>
+                    <h5>Tickets</h5>
+                </div>
+            </div>
+            <div class="content">
+                <div class="profile-detail">
+                    <div class="profile my-2">
+                        <span class="me-2">Name:</span>
+                        <h5 class="" th:text="${user.username}"></h5>
+                    </div>
+                    <div class="profile my-2">
+                        <span class="me-2">Email:</span>
+                        <h5 class="" th:text="${user.email}"></h5>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-primary" th:href="@{/users/edit/{id}(id=${user.id})}">Update</a>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-secondary" th:href="@{/logout}">logout</a>
+                    </div>
+                </div>
+                <div class="trans-detail">
+                    <p>No available transaction at the moment
+                </div>
+                <div class="ticket-detail">
+                    <p>You have no booking Tickets at the moment, make a reservation</p>
+                </div>
+            </div>
         </div>
+
     </main>
    <!--footer section-->
    <footer th:replace="fragments/footer :: footer">...</footer>

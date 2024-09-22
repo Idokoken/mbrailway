@@ -53,6 +53,10 @@
                             <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
                         </ul>
                     </div>
+
+
+
+
                     <li class="nav-item">
                         <a class="nav-link" th:unless="${username != null and username != 'anonymousUser'}" th:href="@{/login}">Register/Login</a>
                     </li>

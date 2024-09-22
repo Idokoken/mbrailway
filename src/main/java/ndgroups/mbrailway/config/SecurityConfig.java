@@ -20,6 +20,7 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -27,6 +28,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/users/**").hasRole("USER")
+                                .requestMatchers("/users/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
@@ -44,7 +46,6 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(){
-
         return userDetailsService;
     }
 
