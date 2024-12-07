@@ -38,6 +38,9 @@ public class AuthController implements WebMvcConfigurer {
             bindingResult.rejectValue("email", null, "Email already in use");
             return "pages/register";
         }
+        if(user.getRole() == null || user.getRole().isBlank()){
+            user.setRole("USER");
+        }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

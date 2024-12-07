@@ -13,7 +13,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/dashboard/{id}")
+    @GetMapping("/{id}")
     public String getUserProfile(@PathVariable Integer id, Model model) {
         User user = userService.getOneUser(id);
         model.addAttribute("user", user);
@@ -30,7 +30,13 @@ public class UserController {
     public String updateUser(Model model, @PathVariable Integer id, @ModelAttribute("user") User
             updateUser)  {
         userService.updateUser(id, updateUser);
-        return "redirect:/users/dashboard/" + id;
+        return "redirect:/users/" + id;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+        return "redirect:/admin/users";
     }
 
 

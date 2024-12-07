@@ -3,15 +3,8 @@ package ndgroups.mbrailway.controller;
 import ndgroups.mbrailway.model.User;
 import ndgroups.mbrailway.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +23,12 @@ public class TestController {
         return userRepository.save(user);
 
     }
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<?> login(@RequestBody User loginRequestDTO) {
+//        Response response = userService.login(loginRequestDTO);
+        return ResponseEntity.status(200).body(loginRequestDTO);
+    }
+
 
 }

@@ -1,46 +1,47 @@
 package ndgroups.mbrailway.controller;
 
 import ndgroups.mbrailway.model.Reservation;
-//import ndgroups.mbrailway.service.UserService;
 import ndgroups.mbrailway.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/reservations")
+@RequestMapping("/reservations")
 public class ReservationController {
     @Autowired
     private ReservationService reservationService;
-    @PostMapping("/reserved")
-    public String filterReservedSeats(@ModelAttribute("reservation") Reservation reservation, Model model){
-        return "";
+    @PostMapping("/{trainId}{userId}")
+    public String createReservation(@PathVariable Integer trainId, @PathVariable Integer userId,
+                                    @ModelAttribute("reservation") Reservation reservation, Model model){
+        reservationService.createReservation(trainId, userId, reservation);
+        return "admin/bookings/checkout";
     }
 
-    @GetMapping("/search-result")
-    public String ReservationPage(@RequestParam("origin") String origin,
-                                  @RequestParam("destination") String destination,
-                                  @RequestParam("filterDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                      LocalDate filterDate,
-                                  @RequestParam("passengers") Integer passengers, Model model) {
-        List<Reservation> reservations = reservationService.searchReservations(origin, destination, filterDate,
-                passengers);
-        model.addAttribute("reservations", reservations);
-        return "pages/search-result";
-//        return "";
+    @GetMapping
+//    @PreAuthorize("hasAuthority(ADMIN)")
+    public String getReservation(Model model) {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        model.addAttribute("reservation", reservations);
+        return "admin/bookings/bookingList";
+    }
+    @GetMapping("/{code}")
+    public String getByConfirmationCode(@PathVariable String code) {
+        Reservation reservation = reservationService.findReservationByConfirmationCode(code);
+        return "admin/bookings/searchCode";
+    }
+    @GetMapping("/cancel/{reservationId}")
+    //    @PreAuthorize("hasAuthority(ADMIN)")
+    public String cancelReservation(@PathVariable Integer reservationId) {
+        reservationService.cancelReservation(reservationId);
+        return "redirect:/reservations/all";
     }
 
-//    @GetMapping("/search")
-//    public String filterReserved(){
-//        return "pages/search-result";
-//    }
+
 
 }
 

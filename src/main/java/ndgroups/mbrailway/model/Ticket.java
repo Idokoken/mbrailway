@@ -17,19 +17,19 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "reservation_id")
-    private Reservation reservation;
+//    @ManyToOne
+//    @JoinColumn(name = "reservation_id")
+//    private Train reservation;
     @CreationTimestamp
     private LocalDateTime bookingTime;
     private Integer numberOfPassengers;
 
-    public Ticket(User user, Reservation reservation) {
-        this.user = user;
-        this.reservation = reservation;
-    }
+//    public Ticket(User user, Train reservation) {
+//        this.user = user;
+//        this.reservation = reservation;
+//    }
 }

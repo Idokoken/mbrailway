@@ -2,7 +2,6 @@ package ndgroups.mbrailway.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Setter
@@ -35,6 +36,8 @@ public class User {
     private String role;
     @CreationTimestamp
     private LocalDateTime createdAt;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<Reservation> reservations = new ArrayList<>();
 
     public User(String username, String email, String password, String role) {
         this.username = username;

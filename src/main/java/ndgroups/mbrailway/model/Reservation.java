@@ -1,6 +1,5 @@
 package ndgroups.mbrailway.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -16,21 +14,21 @@ import java.time.LocalDateTime;
 @Data
 @ToString
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservations")
 public class Reservation {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer reservationId;
-    private String origin;
-    private String destination;
-    private LocalDate departureDate;
-    private LocalDateTime departureTime;
-    private Integer availableSeats;
-    private Double price;
-    private String TrainName;
-//    User customer;
+    private Integer id;
+    private Double totalAmount;
+    private Integer seatNumber;
+    private String bookingConfirmationCode;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id")
+    private Train train;
     @CreationTimestamp
-    private LocalDateTime reservationTime;
+    private LocalDateTime CreatedAt;
 
 }

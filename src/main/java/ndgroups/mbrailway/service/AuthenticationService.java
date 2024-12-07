@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Optional;
 
 @Transactional
@@ -17,19 +15,15 @@ public class AuthenticationService {
     @Autowired
     private UserRepository userRepository;
 
-//    public User registerUser(String name, String email, String password) {
-//        String encodedPassword = passwordEncoder.encode(password);
-//        Role userRole = roleRepository.findByAuthority("USER").get();
-//
-//        Set<Role> authorities = new HashSet<>();
-//        authorities.add(userRole);
-//
-//        return userRepository.save(new User(name, email, encodedPassword));
-//
-//    }
 
     public User registerUser(User user) {
-//        user.setRoles(Arrays.asList("USER"));
+
+//        if(user.getRole() == null || user.getRole().isBlank()){
+//            user.setRole("USER");
+//        }
+//        if (userRepository.isEmailExist(user.getEmail())){
+//            throw new OurException(user.getEmail() + "Email Already Exist");
+//        }
         return userRepository.save(user);
     }
 
